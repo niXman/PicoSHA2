@@ -56,7 +56,7 @@ void input_hex(std::istream& is, OutIter first, OutIter last){
 
 template<typename OutIter>
 void hex_string_to_bytes(const std::string& hex_str, OutIter first, OutIter last){
-    assert(hex_str.length() >= 2*std::distance(first, last));
+    assert(hex_str.length() >= static_cast<std::size_t>(2*std::distance(first, last)));
     std::istringstream iss(hex_str);
     input_hex(iss, first, last);
 }
@@ -246,10 +246,9 @@ void test(){
     }
 }
 
-int main(int argc, char* argv[])
+int main(int, char**)
 {
     test();
 
     return 0;
 }
-
